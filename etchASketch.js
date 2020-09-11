@@ -1,24 +1,27 @@
 
-function createGrid(totalCells) {
+function createGrid(cellsPerRow) {
     
     const gridContainer = document.getElementById('grid');
     gridContainer.innerHTML = '';
-    // let gridMaxColumns = Math.floor(Math.sqrt(totalCells));
-    // console.log(gridMaxColumns);
 
-    gridContainer.gridTemplateColumns = `repeat(${totalCells}, 1fr)`;
-    gridContainer.gridTemplateRows = `repeat(${totalCells}, 1fr)`;
+    let gridWidth = gridContainer.offsetWidth;
+    let cellSize = `${gridWidth / cellsPerRow}px`;
+
+    console.log(`
+    gridWidth: ${gridWidth}
+    cellsPerRow: ${cellsPerRow}
+    cellSize: ${gridWidth / cellsPerRow}
+    `);
+
+    let gridCSS = `repeat(${cellsPerRow}, ${cellSize})`;
+    gridContainer.style.gridTemplateColumns = gridCSS;
+    gridContainer.style.gridTemplateRows = gridCSS;
 
     let gridCells = [];
 
-    let findSize = Math.floor(Math.random() * totalCells) + 1;
-    console.log(findSize);
-
-    for (let i = 0; i < totalCells; i++) {
+    for (let i = 0; i < Math.pow(cellsPerRow, 2); i++) {
         gridCells[i] = document.createElement('div');
         gridCells[i].classList.add('gridItem');
-
-        // gridCells[i].style.gridColumn = Math.floor()
 
         gridCells[i].addEventListener('mouseenter', () => {
             gridCells[i].classList.add('touched');
@@ -29,14 +32,8 @@ function createGrid(totalCells) {
 }
 
 function resetGrid() {
-    const gridItems = document.querySelectorAll('.gridItem');
-
-    gridItems.forEach(cell => {
-        cell.classList.remove('touched');
-    });
-
-    let numCells = prompt("How many squares per side should" + 
-                        " the new grid have?");
+    let numCells = prompt("How many cells per row should" + 
+                        " the grid have?");
 
     createGrid(numCells);
 }
