@@ -1,0 +1,6 @@
+auto-resizing grid algorithm
+
+get grid container width in pixels (= grid width)
+take Math.floor(squareroot) of totalCells # to get number of columns and rows
+
+

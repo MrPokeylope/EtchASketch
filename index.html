@@ -4,31 +4,62 @@
 <html>
 <body>
 
-<div id="grid"></div>
+    <div class="flex">
+        <button id="reset">Reset Grid</button>
+    </div>
+    <div id="grid"></div>
 
-<script src="etchASketch.js"></script>
+    <style>
 
-<style>
+    .flex {
+        display: flex;
+        margin: 20px 0 30px 0;
+        justify-content: center;
+    }
 
-#grid {
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    /* grid-template-rows: repeat(4, 150px); */
-    padding: 10px;
-}
+    button {
+        background-color: #2bb1f9;
+        border: none;
+        border-radius: 5px;
+        width: 20vw;
+        box-shadow: 0 9px #999;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        font-size: 18px;
+        cursor: pointer;
+    }
 
-.gridItem {
-    border: 1px solid black;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}
+    button:hover {
+        background-color: #0d95de
+    }
 
-.gridItem:hover {
-    
-}
+    button:active {
+        background-color: #0d95de;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
 
-</style>
+    #grid {
+        display: grid;
+        margin: 0 20px;
+        /* height: 100%;
+        width: 100%; */
+    }
+
+    .gridItem {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    .touched {
+        background-color: black;
+        color: black;
+    }
+
+    </style>
+
+    <script src="etchASketch.js"></script>
 
 </body>
 </html>
